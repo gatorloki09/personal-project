@@ -110,3 +110,45 @@ function UpdateOnSelectionItems() {
   todoValue.value = "";
   setAlertMessage("Todo item Updated Successfully!");
 }
+
+function DeleteToDoItems(e) {
+  let deleteValue =
+    e.parentElement.parentElement.querySelector("div").innerText;
+
+  if (confirm(`Are you sure. Due you want to delete this ${deleteValue}!`)) {
+    e.parentElement.parentElement.setAttribute("class", "deleted-item");
+    todoValue.focus();
+
+    todo.forEach((element) => {
+      if (element.item == deleteValue.trim()) {
+        todo.splice(element, 1);
+      }
+    });
+
+    setTimeout(() => {
+      e.parentElement.parentElement.remove();
+    }, 1000);
+
+    setLocalStorage();
+  }
+}
+
+function CompletedToDoItems(e) {
+  if (e.parentElement.querySelector("div").style.textDecoration === "") {
+    const img = document.createElement("img");
+    img.src = "/images/check-mark.png";
+    img.className = "todo-controls";
+    e.parentElement.querySelector("div").style.textDecoration = "line-through";
+    e.parentElement.querySelector("div").appendChild(img);
+    e.parentElement.querySelector("img.edit").remove();
+
+    todo.forEach((element) => {
+      if (
+        e.parentElement.querySelector("div").innerText.trim() == element.item
+      ) {
+        element.status = true;
+      }
+    });
+    setLocalStorage();
+    setAlertMessage("Todo item Completed Successfully!");
+  }

@@ -1,1 +1,18 @@
+<div class="container">
+<!-- Inside the container will add an input field for adding tasks, a list to display the tasks, and buttons for adding and removing tasks.-->
+</div>
 
+body {
+  background: #78c1f3;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: #ffffff;
+  padding: 25px;
+  width: 550px;
+  border-radius: 10px;
+}

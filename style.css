@@ -1,5 +1,6 @@
-<div class="container">
-<!-- Inside the container will add an input field for adding tasks, a list to display the tasks, and buttons for adding and removing tasks.-->
-</div>
-
-
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+}

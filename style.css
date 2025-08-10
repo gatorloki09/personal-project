@@ -69,3 +69,10 @@ li {
   border-radius: 5px;
   padding: 5px 10px;
 }
+
+.todo-controls {
+  width: 25px;
+  height: 25px;
+  padding: 3px;
+  margin-right: 5px;
+}

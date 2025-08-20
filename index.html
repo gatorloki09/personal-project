@@ -13,7 +13,6 @@
       <img src="Unknown.png" height="50px" />
     </div>
 
-    <!-- ToDo List -->
     <div class="todo-body">
       <input 
         type="text" 
@@ -32,33 +31,6 @@
     <ul id="list-items" class="list-items"></ul>
   </div>
 
-  <!-- Reminder Section -->
-  <div class="container" style="margin-top:30px;">
-    <h2>Set a Reminder</h2>
-    <input type="text" id="title" placeholder="Reminder title" /><br/><br/>
-    <input type="text" id="description" placeholder="Reminder description" /><br/><br/>
-    <input type="date" id="date" /><br/><br/>
-    <input type="time" id="time" /><br/><br/>
-    <button onclick="scheduleReminder()">Set Reminder</button>
-
-    <h3 style="margin-top:20px;">Scheduled Reminders</h3>
-    <table border="1" width="100%">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Date & Time</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="reminderTableBody"></tbody>
-    </table>
-  </div>
-
-  <!-- Audio notification -->
-  <audio id="notificationSound" src="notification-18-270129.mp3"></audio>
-
   <script src="script.js"></script>
-  <script src="reminder.js"></script>
 </body>
 </html>

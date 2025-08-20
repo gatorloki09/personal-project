@@ -2,8 +2,11 @@ const todoValue = document.getElementById("todoText"),
   listItems = document.getElementById("list-items"),
   addUpdateClick = document.getElementById("AddUpdateClick");
 
-todoValue.addEventListener("keypress", function(e) {
-  if (e.key === "Enter") {
+let editTodo = null; // track if editing a task
+
+// Allow pressing Enter to add task
+todoValue.addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
     addUpdateClick.click();
   }
 });
@@ -15,28 +18,36 @@ function CreateToDoData() {
     return;
   }
 
-  let li = document.createElement("li");
-  const todoItems = `
-    <div>${todoValue.value}</div>
-    <div>
-      <img class="edit" src="images/pencil.png" alt="Edit">
-      <img class="delete" src="images/delete.png" alt="Delete">
-    </div>
-  `;
+  if (editTodo) {
+    // If editing, just update text
+    editTodo.firstChild.textContent = todoValue.value;
+    editTodo = null;
+    addUpdateClick.src = "add-icon-design-in-round-shape-png-1.png";
+  } else {
+    // Create new task
+    let li = document.createElement("li");
+    li.innerHTML = `
+      <span>${todoValue.value}</span>
+      <div>
+        <img class="edit todo-controls" src="image/pencil.png" onclick="editTask(this)" />
+        <img class="delete todo-controls" src="image/delete.png" onclick="deleteTask(this)" />
+      </div>
+    `;
+    listItems.appendChild(li);
+  }
 
-  li.innerHTML = todoItems;
-  listItems.appendChild(li);
   todoValue.value = "";
-
-  // Delete functionality
-  li.querySelector(".delete").addEventListener("click", function() {
-    li.remove();
-  });
-
-  // Edit functionality
-  li.querySelector(".edit").addEventListener("click", function() {
-    todoValue.value = li.firstElementChild.textContent;
-    li.remove();
-  });
 }
 
+// Delete task
+function deleteTask(e) {
+  e.parentElement.parentElement.remove();
+}
+
+// Edit task
+function editTask(e) {
+  editTodo = e.parentElement.parentElement;
+  todoValue.value = editTodo.firstChild.textContent;
+  addUpdateClick.src = "image/update.png"; // change button icon
+  todoValue.focus();
+}

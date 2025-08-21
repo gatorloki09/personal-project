@@ -20,7 +20,7 @@ function CreateToDoData() {
   const todoItems = `
     <div>${todoValue.value}</div>
     <div>
-      <img class="edit todo-controls" src="images/pencil.png" alt="Edit">
+      <img class="edit todo-controls" src="764599.png" alt="Edit">
       <img class="delete todo-controls" src="images/delete.png" alt="Delete">
     </div>
   `;

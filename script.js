@@ -1,42 +1,64 @@
-const todoValue = document.getElementById("todoText"),
-  listItems = document.getElementById("list-items"),
-  addUpdateClick = document.getElementById("AddUpdateClick");
+let timeoutIds = [];
 
-// Allow pressing "Enter" to add
-todoValue.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    addUpdateClick.click();
-  }
-});
+    function scheduleReminder() {
+      const title = document.getElementById("title").value;
+      const description = document.getElementById("description").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
 
-function CreateToDoData() {
-  if (todoValue.value.trim() === "") {
-    alert("Please Enter Your Reminder");
-    todoValue.focus();
-    return; // stop here
-  }
+      const dateTimeString = `${date}T${time}`;
+      const scheduledTime = new Date(dateTimeString);
+      const currentTime = new Date();
+      const timeDifference = scheduledTime - currentTime;
 
-  let li = document.createElement("li");
-  const todoItems = `
-    <div>${todoValue.value}</div>
-    <div>
-      <img class="edit todo-controls" src="764599.png" alt="Edit">
-      <img class="delete todo-controls" src="images/delete.png" alt="Delete">
-    </div>
-  `;
+      if (timeDifference > 0) {
+        addReminder(title, description, dateTimeString);
 
-  li.innerHTML = todoItems;
-  listItems.appendChild(li);
-  todoValue.value = "";
+        const timeoutId = setTimeout(function () {
+          document.getElementById("notificationSound").play();
 
-  // Add delete functionality
-  li.querySelector(".delete").addEventListener("click", function () {
-    li.remove();
-  });
+          if (Notification.permission === "granted") {
+            new Notification(title, {
+              body: description,
+              requireInteraction: true
+            });
+          } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(permission => {
+              if (permission === "granted") {
+                new Notification(title, {
+                  body: description,
+                  requireInteraction: true
+                });
+              }
+            });
+          }
+        }, timeDifference);
 
-  // Add edit functionality
-  li.querySelector(".edit").addEventListener("click", function () {
-    todoValue.value = li.firstElementChild.textContent; // put text back in input
-    li.remove();
-  });
-}
+        timeoutIds.push(timeoutId);
+      } else {
+        alert("The scheduled time is in the past!");
+      }
+    }
+
+    function addReminder(title, description, dateTimeString) {
+      const tableBody = document.getElementById("reminderTableBody");
+
+      const row = tableBody.insertRow();
+      const titleCell = row.insertCell(0);
+      const descriptionCell = row.insertCell(1);
+      const dateTimeCell = row.insertCell(2);
+      const actionCell = row.insertCell(3);
+
+      titleCell.innerText = title;
+      descriptionCell.innerText = description;
+      dateTimeCell.innerText = dateTimeString;
+      actionCell.innerHTML = '<button onclick="deleteReminder(this)">Delete</button>';
+    }
+
+    function deleteReminder(button) {
+      const row = button.closest("tr");
+      const index = row.rowIndex - 1;
+      clearTimeout(timeoutIds[index]);
+      timeoutIds.splice(index, 1);
+      row.remove();
+    }

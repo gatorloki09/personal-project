@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", () => {
+  if (Notification.permission !== "granted") {
+    Notification.requestPermission();
+  }
+});
+
 let timeoutIds = [];
 
     function scheduleReminder() {

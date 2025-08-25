@@ -1,19 +1,19 @@
 :root {
-  --base-color: #ffffff;
-  --base-variant: #f4f4f4;
-  --text-color: #111528;
-  --secondary-text: #232738;
-  --primary-color: #3a435d;
-  --accent-color: #4caf50;
+  base-color: #ffffff;
+  base-variant: #f4f4f4;
+  text-color: #111528;
+  secondary-text: #232738;
+  primary-color: #3a435d;
+  accent-color: #4caf50;
 }
 
 .darkmode {
-  --base-color: #070b1d;
-  --base-variant: #101425;
-  --text-color: #ffffff;
-  --secondary-text: #a4a5b8;
-  --primary-color: #3a435d;
-  --accent-color: #0071ff;
+  base-color: #070b1d;
+  base-variant: #101425;
+  text-color: #ffffff;
+  secondary-text: #a4a5b8;
+  primary-color: #3a435d;
+  accent-color: #0071ff;
 }
 
 * {

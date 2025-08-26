@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const disableDarkmode = () => {
     document.body.classList.remove("darkmode");
-    localStorage.setItem("darkmode", null);
+    localStorage.setItem("darkmode", "inactive");
   };
 
   if (darkmode === "active") enableDarkmode();
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     darkmode !== "active" ? enableDarkmode() : disableDarkmode();
   });
 });
+
 
 let timeoutIds = [];
 
@@ -79,3 +80,7 @@ function deleteReminder(button) {
   timeoutIds.splice(index, 1);
   row.remove();
 }
+
+
+
+

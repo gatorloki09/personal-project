@@ -59,6 +59,10 @@ function scheduleReminder() {
   }
 }
 
+function setTime() {
+  
+}
+
 function addReminder(title, description, dateTimeString) {
   const tableBody = document.getElementById("reminderTableBody");
 

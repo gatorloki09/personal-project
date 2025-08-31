@@ -60,17 +60,17 @@ function scheduleReminder() {
 }
 
 function setMorning() {
-  const date = document.getElementById("date")
-  const time = document.getElementById("time")
+  const date = document.getElementById("date");
+  const time = document.getElementById("time");
 
-  const today = new Date()
-  const tomorrow = today.addDays(1)
-  tomorrow.setHours(7)
-  tomorrow.setMinutes(0)
-  tomorrow.setSeconds(0)
+  const today = new Date();
+  const tomorrow = today.addDays(1);
+  tomorrow.setHours(7);
+  tomorrow.setMinutes(0);
+  tomorrow.setSeconds(0);
 
-  date.value = tomorrow.toLocaleDateString()
-  time.value = tomorrow.toLocaleTimeString()
+  date.value = tomorrow.toLocaleDateString();
+  time.value = tomorrow.toLocaleTimeString();
                                       
 }
 

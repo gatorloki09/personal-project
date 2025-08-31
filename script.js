@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   if (Notification.permission !== "granted") {
     Notification.requestPermission();
@@ -60,6 +61,7 @@ function scheduleReminder() {
 }
 
 function setMorning() {
+  console.log("The button works!!!")
   const date = document.getElementById("date");
   const time = document.getElementById("time");
 

@@ -66,7 +66,8 @@ function setMorning() {
   const time = document.getElementById("time");
 
   const today = new Date();
-  const tomorrow = today.addDays(1);
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
   tomorrow.setHours(7);
   tomorrow.setMinutes(0);
   tomorrow.setSeconds(0);

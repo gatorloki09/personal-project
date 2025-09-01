@@ -79,6 +79,26 @@ function setMorning() {
   time.value = `${hours}:${minutes}`;
 }
 
+function setLunch() {
+  const date = document.getElementById("date");
+  const time = document.getElementById("time");
+
+  const lunchtime = new Date();
+  lunchtime.setDate(lunchtime.getDate());
+  tomorrow.setHours(12, 0, 0, 0);
+
+
+  const year = tomorrow.getFullYear();
+  const month = String(tomorrow.getMonth() + 1).padStart(2, "0");
+  const day = String(tomorrow.getDate()).padStart(2, "0");
+  const hours = String(tomorrow.getHours()).padStart(2, "12");
+  const minutes = String(tomorrow.getMinutes()).padStart(2, "0");
+
+  date.value = `${year}-${month}-${day}`;
+  time.value = `${hours}:${minutes}`;
+}
+
+
 function addReminder(title, description, dateTimeString) {
   const tableBody = document.getElementById("reminderTableBody");
 

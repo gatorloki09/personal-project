@@ -88,7 +88,7 @@ function setLunch() {
   lunchtime.setHours(12, 0, 0, 0);
 
 
-  const year = tomorrow.getFullYear();
+  const year = lunchtime.getFullYear();
   const month = String(lunchtime.getMonth() + 1).padStart(2, "0");
   const day = String(lunchtime.getDate()).padStart(2, "0");
   const hours = String(lunchtime.getHours()).padStart(2, "12");

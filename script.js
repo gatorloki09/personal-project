@@ -84,14 +84,12 @@ function setLunch() {
   const time = document.getElementById("time");
 
   const lunchtime = new Date();
-  lunchtime.setDate(lunchtime.getDate());
-  lunchtime.setHours(12, 0, 0, 0);
-
+  lunchtime.setHours(12, 0, 0, 0); // Today at 12:00
 
   const year = lunchtime.getFullYear();
   const month = String(lunchtime.getMonth() + 1).padStart(2, "0");
   const day = String(lunchtime.getDate()).padStart(2, "0");
-  const hours = String(lunchtime.getHours()).padStart(2, "12");
+  const hours = String(lunchtime.getHours()).padStart(2, "0");
   const minutes = String(lunchtime.getMinutes()).padStart(2, "0");
 
   date.value = `${year}-${month}-${day}`;

@@ -81,8 +81,8 @@ th {
   cursor: pointer;
 }
 
-#theme-switch svg {
-  fill: var(--primary-color);
+#theme-switch svg:first-child {
+  display: block;
 }
 #theme-switch svg:last-child {
   display: none;

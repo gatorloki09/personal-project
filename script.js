@@ -85,14 +85,14 @@ function setLunch() {
 
   const lunchtime = new Date();
   lunchtime.setDate(lunchtime.getDate());
-  tomorrow.setHours(12, 0, 0, 0);
+  lunchtime.setHours(12, 0, 0, 0);
 
 
   const year = tomorrow.getFullYear();
-  const month = String(tomorrow.getMonth() + 1).padStart(2, "0");
-  const day = String(tomorrow.getDate()).padStart(2, "0");
-  const hours = String(tomorrow.getHours()).padStart(2, "12");
-  const minutes = String(tomorrow.getMinutes()).padStart(2, "0");
+  const month = String(lunchtime.getMonth() + 1).padStart(2, "0");
+  const day = String(lunchtime.getDate()).padStart(2, "0");
+  const hours = String(lunchtime.getHours()).padStart(2, "12");
+  const minutes = String(lunchtime.getMinutes()).padStart(2, "0");
 
   date.value = `${year}-${month}-${day}`;
   time.value = `${hours}:${minutes}`;

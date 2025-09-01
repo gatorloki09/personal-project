@@ -61,20 +61,22 @@ function scheduleReminder() {
 }
 
 function setMorning() {
-  console.log("The button works!!!")
   const date = document.getElementById("date");
   const time = document.getElementById("time");
 
-  const today = new Date();
   const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-  tomorrow.setHours(7);
-  tomorrow.setMinutes(0);
-  tomorrow.setSeconds(0);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(7, 0, 0, 0);
 
-  date.value = tomorrow.toLocaleDateString();
-  time.value = tomorrow.toLocaleTimeString();
-                                      
+
+  const year = tomorrow.getFullYear();
+  const month = String(tomorrow.getMonth() + 1).padStart(2, "0");
+  const day = String(tomorrow.getDate()).padStart(2, "0");
+  const hours = String(tomorrow.getHours()).padStart(2, "0");
+  const minutes = String(tomorrow.getMinutes()).padStart(2, "0");
+
+  date.value = `${year}-${month}-${day}`;
+  time.value = `${hours}:${minutes}`;
 }
 
 function addReminder(title, description, dateTimeString) {

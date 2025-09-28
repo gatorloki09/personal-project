@@ -81,15 +81,19 @@ th {
   cursor: pointer;
 }
 
-#theme-switch svg:first-child {
+#theme-switch svg.moon-icon {
   display: block;
 }
-#theme-switch svg:last-child {
+
+#theme-switch svg.sun-icon {
   display: none;
 }
-.darkmode #theme-switch svg:first-child {
+
+/* When body has .darkmode, switch icons */
+body.darkmode #theme-switch svg.moon-icon {
   display: none;
 }
-.darkmode #theme-switch svg:last-child {
+
+body.darkmode #theme-switch svg.sun-icon {
   display: block;
 }

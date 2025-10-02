@@ -89,7 +89,7 @@ th {
   display: none;
 }
 
-/* When body has .darkmode, switch icons */
+
 body.darkmode #theme-switch svg.moon-icon {
   display: none;
 }

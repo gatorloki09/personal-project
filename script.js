@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   if (Notification.permission !== "granted") {
     Notification.requestPermission();
@@ -10,22 +9,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const enableDarkmode = () => {
     document.body.classList.add("darkmode");
     localStorage.setItem("darkmode", "active");
+    if (themeSwitch) themeSwitch.setAttribute("aria-pressed", "true");
   };
 
   const disableDarkmode = () => {
     document.body.classList.remove("darkmode");
     localStorage.setItem("darkmode", "inactive");
+    if (themeSwitch) themeSwitch.setAttribute("aria-pressed", "false");
   };
 
   if (darkmode === "active") enableDarkmode();
 
-  themeSwitch.addEventListener("click", () => {
-    darkmode = localStorage.getItem("darkmode");
-    darkmode !== "active" ? enableDarkmode() : disableDarkmode();
-  });
+  if (themeSwitch) {
+    themeSwitch.addEventListener("click", () => {
+      darkmode = localStorage.getItem("darkmode");
+      darkmode !== "active" ? enableDarkmode() : disableDarkmode();
+    });
+  }
 });
 
-
+/* ---------- rest of your reminder code unchanged ---------- */
 
 let timeoutIds = [];
 
@@ -44,7 +47,8 @@ function scheduleReminder() {
     addReminder(title, description, dateTimeString);
 
     const timeoutId = setTimeout(function () {
-      document.getElementById("notificationSound").play();
+      const sound = document.getElementById("notificationSound");
+      if (sound) sound.play();
 
       if (Notification.permission === "granted") {
         new Notification(title, {
@@ -68,7 +72,6 @@ function setMorning() {
   tomorrow.setDate(tomorrow.getDate() + 1);
   tomorrow.setHours(7, 0, 0, 0);
 
-
   const year = tomorrow.getFullYear();
   const month = String(tomorrow.getMonth() + 1).padStart(2, "0");
   const day = String(tomorrow.getDate()).padStart(2, "0");
@@ -84,7 +87,7 @@ function setLunch() {
   const time = document.getElementById("time");
 
   const lunchtime = new Date();
-  lunchtime.setHours(12, 0, 0, 0); // Today at 12:00
+  lunchtime.setHours(12, 0, 0, 0);
 
   const year = lunchtime.getFullYear();
   const month = String(lunchtime.getMonth() + 1).padStart(2, "0");
@@ -95,7 +98,6 @@ function setLunch() {
   date.value = `${year}-${month}-${day}`;
   time.value = `${hours}:${minutes}`;
 }
-
 
 function addReminder(title, description, dateTimeString) {
   const tableBody = document.getElementById("reminderTableBody");

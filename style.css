@@ -65,12 +65,14 @@ th {
 }
 
 
-#theme-switch {
-  height: 60px;
-  width: 60px;
+.cta-button{
+  background-color: var(--accent-color);
+}
+#theme-switch{
+  height: 50px;
+  width: 50px;
   padding: 0;
-  border: none;
-  border-radius: 10%;
+  border-radius: 50%;
   background-color: var(--base-variant);
   display: flex;
   justify-content: center;
@@ -78,22 +80,15 @@ th {
   position: fixed;
   top: 20px;
   right: 20px;
-  cursor: pointer;
 }
-
-#theme-switch svg.moon-icon {
-  display: block;
+#theme-switch svg{
+  fill: var(--primary-color);
 }
-
-#theme-switch svg.sun-icon {
+#theme-switch svg:last-child{
   display: none;
 }
-
-
-body.darkmode #theme-switch svg.moon-icon {
+.darkmode #theme-switch svg:first-child{
   display: none;
 }
-
-body.darkmode #theme-switch svg.sun-icon {
+.darkmode #theme-switch svg:last-child{
   display: block;
-}

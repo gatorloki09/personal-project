@@ -70,7 +70,7 @@ th {
   width: 60px;
   padding: 0;
   border: none;
-  border-radius: 20%;
+  border-radius: 10%;
   background-color: var(--base-variant);
   display: flex;
   justify-content: center;

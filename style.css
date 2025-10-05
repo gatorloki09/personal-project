@@ -1,77 +1,8 @@
-:root {
-  --base-color: #ffffff;
-  --base-variant: #f4f4f4;
-  --text-color: #111528;
-  --secondary-text: #232738;
-  --primary-color: #3a435d;
-  --accent-color: #4caf50;
-}
-
-.darkmode {
-  --base-color: #070b1d;
-  --base-variant: #101425;
-  --text-color: #ffffff;
-  --secondary-text: #a4a5b8;
-  --primary-color: #3a435d;
-  --accent-color: #0071ff;
-}
-body {
-  background: var(--base-variant);
-  color: var(--text-color);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  max-width: 500px;
-  margin: auto;
-  background-color: var(--base-color);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-
-input {
-  width: 100%;
-  margin-top: 5px;
-  padding: 8px;
-  border: 1px solid var(--secondary-text);
-  border-radius: 5px;
-  background: var(--base-variant);
-  color: var(--text-color);
-}
-
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  background-color: var(--base-color);
-  color: var(--text-color);
-}
-
-th, td {
-  padding: 8px;
-  border: 1px solid var(--secondary-text);
-  text-align: center;
-}
-
-th {
-  background-color: var(--accent-color);
-  color: #fff;
-}
-
-
-.cta-button{
-  background-color: var(--accent-color);
-}
-#theme-switch{
+#theme-switch {
   height: 50px;
   width: 50px;
   padding: 0;
+  border: none;
   border-radius: 50%;
   background-color: var(--base-variant);
   display: flex;
@@ -80,15 +11,33 @@ th {
   position: fixed;
   top: 20px;
   right: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-#theme-switch svg{
+
+/* Icon color */
+#theme-switch svg {
   fill: var(--primary-color);
+  transition: opacity 0.3s ease;
 }
-#theme-switch svg:last-child{
-  display: none;
-}
-.darkmode #theme-switch svg:first-child{
-  display: none;
-}
-.darkmode #theme-switch svg:last-child{
+
+/* Default state (light mode): show moon, hide sun */
+#theme-switch svg.moon-icon {
   display: block;
+}
+#theme-switch svg.sun-icon {
+  display: none;
+}
+
+/* Dark mode state: show sun, hide moon */
+body.darkmode #theme-switch svg.moon-icon {
+  display: none;
+}
+body.darkmode #theme-switch svg.sun-icon {
+  display: block;
+}
+
+/* Optional: button color in dark mode */
+body.darkmode #theme-switch {
+  background-color: var(--primary-color);
+}

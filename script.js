@@ -98,6 +98,22 @@ function setLunch() {
   date.value = `${year}-${month}-${day}`;
   time.value = `${hours}:${minutes}`;
 }
+function setEvening() {
+  const date = document.getElementById("date");
+  const time = document.getElementById("time");
+
+  const Eveningtime = new Date();
+  eveningtime.setHours(17, 0, 0, 0);
+
+  const year = eveningtime.getFullYear();
+  const month = String(eveningtime.getMonth() + 1).padStart(2, "0");
+  const day = String(eveningtime.getDate()).padStart(2, "0");
+  const hours = String(eveningtime.getHours()).padStart(2, "0");
+  const minutes = String(eveningtime.getMinutes()).padStart(2, "0");
+
+  date.value = `${year}-${month}-${day}`;
+  time.value = `${hours}:${minutes}`;
+}
 
 function addReminder(title, description, dateTimeString) {
   const tableBody = document.getElementById("reminderTableBody");

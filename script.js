@@ -102,7 +102,7 @@ function setEvening() {
   const date = document.getElementById("date");
   const time = document.getElementById("time");
 
-  const Eveningtime = new Date();
+  const eveningtime = new Date();
   eveningtime.setHours(17, 0, 0, 0);
 
   const year = eveningtime.getFullYear();

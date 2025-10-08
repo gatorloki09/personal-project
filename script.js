@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* ---------- rest of your reminder code unchanged ---------- */
 
 let timeoutIds = [];
 

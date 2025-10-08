@@ -85,21 +85,21 @@ th {
   z-index: 40;
 }
 
-/* icon color + transition */
+
 #theme-switch svg {
   fill: var(--primary-color);
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* use explicit classes — safer than :first-child/:last-child */
+
 #theme-switch svg.moon-icon { display: block; }
 #theme-switch svg.sun-icon  { display: none; }
 
-/* when body has .darkmode swap icons */
+
 body.darkmode #theme-switch svg.moon-icon { display: none; }
 body.darkmode #theme-switch svg.sun-icon  { display: block; }
 
-/* optional: change button bg in dark mode */
+
 body.darkmode #theme-switch {
   background-color: rgba(255,255,255,0.06);
 }
